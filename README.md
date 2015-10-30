@@ -11,7 +11,7 @@ The project is built into a C# Visual Studio Solution.
 Most of the content it includes is inspired from real development support cases and PI Square questions. You should see more content added to this project in the near future as we continue to import our existing snippets into this project.  It is currently in a very early state and you should consider it beta for now.  We would really like your feedbacks as well as your contributions.
 
 # How it works?
-* Each applet has its own class, and its own command line parameters.  
+* Each applet has its own class
 * Each applet has its own command line parameters
 
 # Command line
@@ -46,12 +46,6 @@ Most of the content it includes is inspired from real development support cases 
 ### Get Help for a Specific Applet
 `clues.exe AFConnect -?`
 
-	----------------------------------------------
-	PI AF SDK Samples
-	Copyright 2015 OSIsoft, LLC - PI Developers Club
-	Licensed under the Apache License, Version 2.0
-	----------------------------------------------
-
 	Usage for AFConnect:
 
 	  -s, --server    Required. Name of the AF Server (PI System) to connect to
@@ -80,7 +74,7 @@ Most of the content it includes is inspired from real development support cases 
     >[Description("**Description X** ")]  
     >public class **ExampleX** : AppletBase
 
-* Add the command line options your applet needs.  You may refer to existing applet for the logic.  For more details please refer to the **Command Line Paser Library ** Help located here: https://github.com/gsscoder/commandline/wiki.
+* Add the command line options your applet needs.  You may refer to existing applet for the logic.  For more details please refer to the **Command Line Paser Library** Help located here: https://github.com/gsscoder/commandline/wiki.
 
 * Create your applet logic
 
