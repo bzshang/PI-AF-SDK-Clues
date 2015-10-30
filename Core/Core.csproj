@@ -49,11 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1-Basics\AF\AFEventFrames.cs" />
     <Compile Include="1-Basics\AF\AFGetValue.cs" />
     <Compile Include="1-Basics\AF\AFCreateAttribute.cs" />
     <Compile Include="1-Basics\AF\AFElements.cs" />
-    <Compile Include="1-Basics\AF\AFTable.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIConnect.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIFindPoints.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIGetCurrentValue.cs" />
