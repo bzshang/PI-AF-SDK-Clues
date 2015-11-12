@@ -41,6 +41,10 @@ namespace Clues
         public PIConnect PIConnect { get; set; }
       
 	
+		[VerbOption("PIConnectSettings", HelpText = "This applet allows to change the timeouts of a PI Data Archive Connection.")]
+        public PIConnectSettings PIConnectSettings { get; set; }
+      
+	
 		[VerbOption("PIFindPoints", HelpText = "Finds PIPoints based on tag name filter and optionally from point source.")]
         public PIFindPoints PIFindPoints { get; set; }
       
