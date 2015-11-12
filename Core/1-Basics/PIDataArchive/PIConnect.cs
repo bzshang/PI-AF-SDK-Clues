@@ -15,15 +15,17 @@
 #endregion
 using System;
 using System.ComponentModel;
+using Clues.Library;
 using CommandLine;
 using OSIsoft.AF;
+using OSIsoft.AF.Collective;
+using OSIsoft.AF.Data;
 using OSIsoft.AF.PI;
 
 namespace Clues
 {
-
     [Description("Connects to a PI Data Archive Server")]
-    public class PIConnect :  AppletBase
+    public class PIConnect : AppletBase
     {
         // Command line options
         [Option('s', "server", HelpText = "Name of the PI Data Archive Server (PI Server) to connect to", Required = true)]
@@ -34,29 +36,32 @@ namespace Clues
             try
             {
                 Connect(Server);
-                Logger.InfoFormat("Connected to PI Data Archive {0}",Server);
+                Logger.InfoFormat("Connected to PI Data Archive {0}", Server);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
             }
-            
         }
-
 
         public PIServer Connect(string server)
         {
-                string serverName = server;
-                PIServers piServers = new PIServers();
-                PIServer piServer = piServers[serverName];
-                
-                // true, null option will force a password dialog to appear.
-                // you should not use this option for a service or an executable that runs outside a windows session.
-                // instead use the empty constructor and make sure that the user that runs the application have an account that allows it to connect.
-                piServer.Connect(true,null);
-                return piServer;
+
+            PIServers piServers = new PIServers();
+            PIServer piServer = piServers[server];
+
+            if (piServer == null)
+                throw new PIServerNotFoundException();
+
+            // the connect signature:(true, null) will force a password dialog to appear.
+            // you should not use this option for a service or an executable that runs outside a user windows session.
+            // instead use the empty constructor and make sure that the user that runs the application have an account that allows it to connect.
+            piServer.Connect(true, null);
+            return piServer;
 
         }
+
+
 
     }
 }
