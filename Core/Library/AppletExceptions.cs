@@ -51,4 +51,11 @@ namespace Clues.Library
     }
 
 
+    public class PIServerNotFoundException : Exception
+    {
+         public PIServerNotFoundException() : base("The PI Data Archive could not be found") { }
+    }
+    
+
+
 }
