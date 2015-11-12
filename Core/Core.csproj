@@ -53,6 +53,7 @@
     <Compile Include="1-Basics\AF\AFCreateAttribute.cs" />
     <Compile Include="1-Basics\AF\AFElements.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIConnect.cs" />
+    <Compile Include="1-Basics\PIDataArchive\PIConnectSettings.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIFindPoints.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIGetCurrentValue.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIGetCurrentValueBulk.cs" />
