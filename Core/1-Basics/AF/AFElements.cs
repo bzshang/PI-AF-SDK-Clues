@@ -74,7 +74,7 @@ namespace Clues
                     ListElements(afDatabase,ElementPath);
                 }
 
-                if (NewElementParams.Count>0)
+                if (NewElementParams!=null && NewElementParams.Count>0)
                 {
                     var elementName = NewElementParams[0];
                     var elementPath=NewElementParams.Count >= 2 ? NewElementParams[1]:null;
