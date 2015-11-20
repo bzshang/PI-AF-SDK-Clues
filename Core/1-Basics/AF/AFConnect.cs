@@ -21,28 +21,28 @@ using OSIsoft.AF;
 
 namespace Clues
 {
-    
+
     [Description("Connects to a PI System (AF)")]
-    public class AFConnect :  AppletBase
+    public class AFConnect : AppletBase
     {
         // Command line options
         [Option('s', "server", HelpText = "Name of the AF Server (PI System) to connect to.", Required = true)]
         public string Server { get; set; }
-        
+
         public override void Run()
         {
             try
             {
                 Connect(Server);
-                Logger.InfoFormat("Connected to PISystem (AF) {0}",Server);
+                Logger.InfoFormat("Connected to PISystem (AF) {0}", Server);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
             }
-            
+
         }
-        
+
         /// <summary>
         ///Example that shows how to connect to PI System
         ///in your application, you should keep a reference to piSystems so its not garbage collected.
@@ -52,20 +52,21 @@ namespace Clues
         /// <returns></returns>
         public PISystem Connect(string server)
         {
-                string serverName = server;
-                PISystems piSystems = new PISystems();
+            string serverName = server;
+            PISystems piSystems = new PISystems();
 
-                // in case you would like to force the auto-creation of the PI System in KST if it does not exist, uncomment the following line
-                
-                // PISystems.DirectoryOptions = PISystems.AFDirectoryOptions.AutoAdd;
-                PISystem piSystem = piSystems[serverName];
+            // in case you would like to force the auto-creation of the PI System in KST if it does not exist, uncomment the following line
+            // see: https://techsupport.osisoft.com/Documentation/PI-AF-SDK/html/T_OSIsoft_AF_PISystems_AFDirectoryOptions.htm
+            // PISystems.DirectoryOptions = PISystems.AFDirectoryOptions.AutoAdd;
 
-                // true, null option will force a password dialog to appear.
-                // you should not use this option for a service or an executable that runs outside a windows session.
-                // instead use the empty constructor and make sure that the user that runs the application have an account that allows it to connect.
-                piSystem.Connect(true,null);
+            PISystem piSystem = piSystems[serverName];
 
-                return piSystem;
+            // true, null option will force a password dialog to appear.
+            // you should not use this option for a service or an executable that runs outside a windows session.
+            // instead use the empty constructor and make sure that the user that runs the application have an account that allows it to connect.
+            piSystem.Connect(true, null);
+
+            return piSystem;
 
         }
 
