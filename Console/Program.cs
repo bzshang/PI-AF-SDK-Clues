@@ -27,17 +27,20 @@ namespace Clues
         [STAThread]
         private static void Main(string[] args)
         {
-            
+            // creates the options class
             var options = new ConsoleOptions();
+            
+            // Parses the arguments, if the parse fails, it displays Usage information
+            Parser.Default.ParseArguments(args, options, OnVerbCommand);
 
-            if (Parser.Default.ParseArguments(args, options, (exampleName, exampleToRun) =>
-            {
-                if (exampleToRun != null)
-                    ((AppletBase)exampleToRun).Run();
-            }));  
+
             
         }
 
-
+        private static void OnVerbCommand(string appletName, object appletObject)
+        {
+            if (appletObject != null)
+                ((AppletBase) appletObject).Run();
+        }
     }
 }
