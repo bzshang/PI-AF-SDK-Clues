@@ -11,36 +11,51 @@ The project is built into a C# Visual Studio Solution.
 Most of the content it includes is inspired from real development support cases and PI Square questions. You should see more content added to this project in the near future as we continue to import our existing snippets into this project.  It is currently in a very early state and you should consider it beta for now.  We would really like your feedbacks as well as your contributions.
 
 # How it works?
+* It is a command line applications that contains many applets
 * Each applet has its own class
 * Each applet has its own command line parameters
+* You can start by executing the command: `clues.exe -?` 
+
 
 # Command line
 
 ### To get help :  
 `clues.exe -?`  
 ### Subset of available commands:  
-    Usage:
-     clues.exe [-?] [applet [-?|options]]
-    
-      AFConnect                Connects to a PI System (AF)
-    
-      AFCreateAttribute        Creates an AF attribute on the specified element.
-                               Supports all standard attributes.
-    
-      AFElements               List and create elements
-    
-      AFGetValue               To get values from attribute(s) using the Path
-                               Syntax
-    
-      PIConnect                Connects to a PI Data Archive Server
-    
-      PIFindPoints             Finds PIPoints based on tag name filter and
-                               optionally from point source.
-    
-      PIGetCurrentValue        Reads the most recent value for the specified tag.
-    
-      PIGetCurrentValueBulk    Reads the most recent value for multiple tags that
-                               match the search mask.
+	Usage:
+	 clues.exe [-?] [applet [-?|options]]
+
+	  AFConnect                Connects to a PI System (AF)
+
+	  AFCreateAttribute        Creates an AF attribute on the specified element.
+							   Supports all standard attributes.
+
+	  AFDataPipeListener       Illustrates the functionning of the AF Data Pipe, to
+							   get changes from AFAttributes as changes occurs
+
+	  AFElements               List and create elements
+
+	  AFGetValue               To get values from attribute(s) using the Path
+							   Syntax
+
+	  PIConnect                Connects to a PI Data Archive Server
+
+	  PIConnectSettings        This applet allows to change the timeouts of a PI
+							   Data Archive Connection.
+
+	  PIDataPipeListener       Illustrates the functionning of the AF Data Pipe, to
+							   get changes from AFAttributes as changes occurs
+
+	  PIDelete                 Deletes data in archive for specified tag(s) and for
+							   a specific time range.
+
+	  PIFindPoints             Finds PIPoints based on tag name filter and
+							   optionally from point source.
+
+	  PIGetCurrentValue        Reads the most recent value for the specified tag.
+
+	  PIGetCurrentValueBulk    Reads the most recent value for multiple tags that
+							   match the search mask.
 
 
 ### Get Help for a Specific Applet
