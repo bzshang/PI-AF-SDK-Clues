@@ -54,12 +54,21 @@
     <Compile Include="1-Basics\AF\AFElements.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIConnect.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIConnectSettings.cs" />
+    <Compile Include="2-Advanced\DataPipes\AFDataPipeListener.cs" />
+    <Compile Include="2-Advanced\DataPipes\Classes\AFConsoleDataObserver.cs" />
+    <Compile Include="2-Advanced\DataPipes\Classes\DataPipeHandler.cs" />
+    <Compile Include="2-Advanced\DataPipes\Classes\PIConsoleDataObserver.cs" />
+    <Compile Include="2-Advanced\DataPipes\PIDataPipeListener.cs" />
+    <Compile Include="3-Utility\PIDeleteUtil\PIDelete.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIFindPoints.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIGetCurrentValue.cs" />
     <Compile Include="1-Basics\PIDataArchive\PIGetCurrentValueBulk.cs" />
     <Compile Include="Library\AppletExceptions.cs" />
+    <Compile Include="Library\Helpers.cs" />
     <Compile Include="Library\PiConnectionMgr.cs" />
     <Compile Include="Library\AfConnectionMgr.cs" />
+    <Compile Include="Library\Workers\DataProcessor.cs" />
+    <Compile Include="_Configuration\AdditionalDescriptionAttribute.cs" />
     <Compile Include="_Configuration\AppletBase.cs" />
     <Compile Include="_Configuration\Helpers.cs" />
     <Compile Include="1-Basics\AF\AFConnect.cs" />
@@ -68,10 +77,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="2-Advanced\" />
-    <Folder Include="3-Utility\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="AppletTemplate.cs.txt" />
   </ItemGroup>
