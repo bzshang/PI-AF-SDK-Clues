@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using log4net;
+using OSIsoft.AF;
 using OSIsoft.AF.PI;
 
 
@@ -29,6 +30,17 @@ namespace Clues.Library
         private readonly ILog _logger = LogManager.GetLogger(typeof(PiConnectionMgr));
         private readonly PIServers _piServers=new PIServers();
         private readonly PIServer _piServer;
+
+        public static PiConnectionMgr ConnectAndGetServer(string server, out PIServer piServer)
+        {
+            var manager=new PiConnectionMgr(server);
+            manager.Connect();
+            piServer = manager.GetPiServer();
+
+            return manager;
+
+        }
+        
         
         public PIServer GetPiServer()
         {
@@ -42,7 +54,11 @@ namespace Clues.Library
         /// <param name="server">Name of the PI System (AF Server) to connect to</param>
         public PiConnectionMgr(string server)
         {
-
+            // if the server does not exist in the local KST we throw an exception.  This is a choice made, you could decide to connect anyway.
+            // to do so you'll need to look at the PIServers.DirectoryOptions Property: https://techsupport.osisoft.com/Documentation/PI-AF-SDK/html/P_OSIsoft_AF_PI_PIServers_DirectoryOptions.htm
+            // ex: 
+            //PIServers.DirectoryOptions=PISystems.AFDirectoryOptions.AutoAdd;
+            
             if (_piServers.Contains(server))
                 _piServer = _piServers[server];
             else
@@ -59,7 +75,6 @@ namespace Clues.Library
 
             try
             {
-
                 _piServer.Connect(true, null);
 
                 _logger.InfoFormat("Connected to {0}. As {1}", _piServer.Name, _piServer.CurrentUserName);
