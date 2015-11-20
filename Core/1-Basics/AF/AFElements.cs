@@ -49,7 +49,7 @@ namespace Clues
         [Option('d', "database", HelpText = "Name of the AF Database to operate on", Required = true)]
         public string DatabaseName { get; set; }
 
-        [OptionList('c', "create",HelpText = "Create an element. Syntax: -c ElementName:<ParentElementPath>:<ElementTemplate>.  Note that putting two : separator is mandatory. And beware it could conflict with your element name or parent path if it contains :",Separator = ':')]
+        [OptionList('c', "create",HelpText = "Create an element. Syntax: -c ElementName:<ParentElementPath>:<ElementTemplate>.  Note that putting two : separator is mandatory for example to create an element at the root: 'NewElement::' . And beware it could conflict with your element name or parent path if it contains :",Separator = ':')]
         public IList<string> NewElementParams { get; set; }
    
         [Option('l', "list", HelpText = "Lists all child elements of the specified Element Name.", MutuallyExclusiveSet = "list")]
