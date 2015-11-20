@@ -40,6 +40,16 @@ namespace Clues.Library
         private readonly PISystem _piSystem;
         private AFDatabase _afDatabase;
         private string _databaseName;
+
+        public static AfConnectionMgr ConnectAndGetDatabase(string server, string databaseName, out AFDatabase database)
+        {
+            var manager=new AfConnectionMgr(server,databaseName);
+            manager.Connect();
+            database=manager.GetDatabase();
+            return manager;
+
+        }
+
         
         public string DatabaseName
         {
