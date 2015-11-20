@@ -29,6 +29,10 @@ namespace Clues
         public AFCreateAttribute AFCreateAttribute { get; set; }
       
 	
+		[VerbOption("AFDataPipeListener", HelpText = "Illustrates the functionning of the AF Data Pipe, to get changes from AFAttributes as changes occurs")]
+        public AFDataPipeListener AFDataPipeListener { get; set; }
+      
+	
 		[VerbOption("AFElements", HelpText = "List and create elements")]
         public AFElements AFElements { get; set; }
       
@@ -43,6 +47,14 @@ namespace Clues
 	
 		[VerbOption("PIConnectSettings", HelpText = "This applet allows to change the timeouts of a PI Data Archive Connection.")]
         public PIConnectSettings PIConnectSettings { get; set; }
+      
+	
+		[VerbOption("PIDataPipeListener", HelpText = "Illustrates the functionning of the AF Data Pipe, to get changes from AFAttributes as changes occurs")]
+        public PIDataPipeListener PIDataPipeListener { get; set; }
+      
+	
+		[VerbOption("PIDelete", HelpText = "Deletes data in archive for specified tag(s) and for a specific time range.")]
+        public PIDelete PIDelete { get; set; }
       
 	
 		[VerbOption("PIFindPoints", HelpText = "Finds PIPoints based on tag name filter and optionally from point source.")]
@@ -62,7 +74,7 @@ namespace Clues
         public string GetUsage(string verb)
         {
 
-            HelpText helpText;
+              HelpText helpText;
             
             if (verb == null)
             {
@@ -75,9 +87,17 @@ namespace Clues
             {
                 helpText=HelpText.AutoBuild(this, verb);
                 helpText = UsageHeading(helpText);
+
+                var additionalDescription= System.Type.GetType("Clues." + verb + ", core").GetAttributeValue(typeof(AdditionalDescription),"Text");
+                helpText.AddPreOptionsLine("\n" + additionalDescription);
+
                 // usage
-                helpText.AddPreOptionsLine("\nUsage for " + verb + ":");
+                helpText.AddPreOptionsLine("\nAvailable options for " + verb + ":");
             }
+
+
+			// bug: to remove copyright it cannot be empty, so finishing the header in the copyright field
+			
 
             return helpText;
         }
@@ -85,17 +105,19 @@ namespace Clues
         private HelpText UsageHeading(HelpText helpText)
         {
             
-            var assembly = Assembly.GetExecutingAssembly();
-            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            var version = fvi.FileVersion; // or fvi.ProductVersion
-            
+        //   var assembly = Assembly.GetExecutingAssembly();
+        //   var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+        //   var version = fvi.FileVersion; // or fvi.ProductVersion
+            helpText.MaximumDisplayWidth = 200;
+			
+
             helpText.Heading = "\n------------------------------------------------------ \n";
             helpText.Heading += "PI-AF-SDK: Command Line Utility and ExampleS (CLUES) \n";
          //   helpText.Heading += "Version: " + version + " \n";
             helpText.Heading += "Copyright 2015 OSIsoft - PI Developers Club\n";
             helpText.Heading += "Source code: github.com/osisoft/PI-AF-SDK-clues\n";
             helpText.Heading += "Licensed under the Apache License, Version 2.0";
-            helpText.Copyright = "------------------------------------------------------ ";
+            helpText.Copyright= "------------------------------------------------------ ";
             return helpText;
         }
     }
