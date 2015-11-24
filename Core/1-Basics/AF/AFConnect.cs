@@ -44,8 +44,8 @@ namespace Clues
         }
 
         /// <summary>
-        ///Example that shows how to connect to PI System
-        ///in your application, you should keep a reference to piSystems so its not garbage collected.
+        /// Example that shows how to connect to PI System
+        /// in your application, you should keep a reference to piSystems so its not garbage collected.
         /// The class  <see cref="AfConnectionMgr"/> illustrates this. (ctrl+click to navigate to the class.)
         /// </summary>
         /// <param name="server"></param>
