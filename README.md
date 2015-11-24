@@ -9,14 +9,14 @@ Clues is a community project that provides a code-base to work with the PI-AF-SD
 The project is built into a C# Visual Studio Solution.  
 
 Most of the content it includes is inspired from real development support cases and PI Square questions. You should see more content added to this project in the near future as we continue to import our existing snippets into this project.  It is currently in a very early state and you should consider it beta for now.  We would really like your feedbacks as well as your contributions.
-
+___
 # How it works?
 * It is a command line applications that contains many applets
 * Each applet has its own class
 * Each applet has its own command line parameters
 * You can start by executing the command: `clues.exe -?` 
 
-
+___
 # Command line
 
 ### To get help :  
@@ -97,7 +97,7 @@ Most of the content it includes is inspired from real development support cases 
 
 * Compilation generated a **Build** folder in the solution folder, you can open a command line from there to test your applet.  Each time you build, it gets updated.
 
-
+___
 # Notes
 
 * If you create a class that is generic enough to be re-used, create it in Library folder.  Namespace for it is Clues.Library
@@ -109,16 +109,20 @@ Most of the content it includes is inspired from real development support cases 
 * Be careful to not use same options switches twice (especially when copy pasting).  If you do so you end up with a null parameter value and you wont understand why!
 
 * Be careful to not create a class constructor with parameters, otherwise the automatic configuration may break and give you odd errors like: Error	1	Running transformation: System.MissingMethodException: No parameterless constructor defined for this object.
+___
+# How to contribute?  
+*You need a GitHub account to contribute*
 
-# How to contribute?
-More explanation will be provided soon, but here is the main idea:
-* Fork the repository in your own GitHub account
-* Clone this fork on your machine
-* Create a branch and make all your changes in this branch. : this will allow you to update your fork master with the latests changes (from OSIsoft/PI-AFSK-Clues) without conflict.  
-* When your code is done, update your fork master with OSIsoft/PI-AFSK-Clues, to get latest changes if any.
-* Finally you can merge your branch with your master
-* Make the pull request
+A quick and easy explanation here:  
+[GitHub Guides: Forking 4 minutes read](https://guides.github.com/activities/forking/)  
 
+In summary:
+* Fork the repository
+* Clone this fork on your dev machine
+* Make the changes
+* Push the changes back to your GitHub forked repository
+* Make pull request
+___
 # License
 
     Copyright 2015 OSIsoft, LLC
