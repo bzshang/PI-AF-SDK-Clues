@@ -14,8 +14,8 @@ using OSIsoft.AF.PI;
 
 namespace Clues
 {
-    [Description("Illustrates the functionning of the AF Data Pipe, to get changes from AFAttributes as changes occurs"),
-     AdditionalDescription("Usage example: AFDataPipeListener -p SRV-PI -t sinudoid,cdt158 ")]
+    [Description("Illustrates the functionning of the PI Data Pipe, to get changes from PI Tags as changes occurs"),
+     AdditionalDescription("Usage example: PIDataPipeListener -p SRV-PI -t sinudoid,cdt158 ")]
     public class PIDataPipeListener : AppletBase
     {
 

@@ -49,7 +49,7 @@ namespace Clues
         public PIConnectSettings PIConnectSettings { get; set; }
       
 	
-		[VerbOption("PIDataPipeListener", HelpText = "Illustrates the functionning of the AF Data Pipe, to get changes from AFAttributes as changes occurs")]
+		[VerbOption("PIDataPipeListener", HelpText = "Illustrates the functionning of the PI Data Pipe, to get changes from PI Tags as changes occurs")]
         public PIDataPipeListener PIDataPipeListener { get; set; }
       
 	

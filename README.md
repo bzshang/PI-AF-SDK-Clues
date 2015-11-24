@@ -43,8 +43,8 @@ Most of the content it includes is inspired from real development support cases 
 	  PIConnectSettings        This applet allows to change the timeouts of a PI
 							   Data Archive Connection.
 
-	  PIDataPipeListener       Illustrates the functionning of the AF Data Pipe, to
-							   get changes from AFAttributes as changes occurs
+	  PIDataPipeListener       Illustrates the functionning of the PI Data Pipe, to
+							   get changes from PI Tags as changes occurs
 
 	  PIDelete                 Deletes data in archive for specified tag(s) and for
 							   a specific time range.

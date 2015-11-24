@@ -60,7 +60,7 @@ namespace Clues
         [Option("EnableDelete", HelpText = "Enables the deletion. CAUTION: when using this option the data on the PI Data Archive will be unrecoverable!", Required = false)]
         public bool EnableDelete { get; set; }
 
-        [Option('d', "days", HelpText = "Specifies the number of days to delete at once.  This parameters serves to chunk the data into several intervals to avoid too big data calls.  This parameter must be defined according to your data density.", DefaultValue = 15, Required = false)]
+        [Option('d', "days", HelpText = "Specifies the number of days to delete at once.  This parameters serves to chunk the data into several intervals to avoid too big data calls.  This parameter must be defined according to your data density: if data density is really high, you should have a small value here.", DefaultValue = 15, Required = false)]
         public int Days { get; set; }
 
         [Option('p',"PrintEvents", HelpText = "Outputs deleted events to the screen. Caution: this option will increase the time it takes to perform the deletion.", Required = false)]
@@ -77,6 +77,7 @@ namespace Clues
 
         private void ValidateParameters()
         {
+            // limit days intervalls to 30 days
             if (Days <= 0 || Days > 30)
                 throw new PIDeleteUtilInvalidParameterException("Days must be included between 1 and 30");
         }
