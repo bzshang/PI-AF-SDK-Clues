@@ -9,7 +9,8 @@ Clues is a community project that provides a code-base to work with the PI-AF-SD
 The project is built into a C# Visual Studio Solution.  
 
 Most of the content it includes is inspired from real development support cases and PI Square questions. You should see more content added to this project in the near future as we continue to import our existing snippets into this project.  It is currently in a very early state and you should consider it beta for now.  We would really like your feedbacks as well as your contributions.
-___
+___  
+
 # How it works?
 
 To use clues, you need to compile it. So you will need Visual Studio and PI AF SDK installed to be able to compile the solution.
@@ -22,7 +23,8 @@ In the solution:
 
 See section "How to add an new applet in the Visual Studio Solution?" below to get started and create your own applet.
 
-___
+___  
+
 # Command line
 
 ### To get help :  
