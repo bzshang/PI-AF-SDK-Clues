@@ -11,10 +11,16 @@ The project is built into a C# Visual Studio Solution.
 Most of the content it includes is inspired from real development support cases and PI Square questions. You should see more content added to this project in the near future as we continue to import our existing snippets into this project.  It is currently in a very early state and you should consider it beta for now.  We would really like your feedbacks as well as your contributions.
 ___
 # How it works?
-* It is a command line applications that contains many applets
+
+To use clues, you need to compile it. So you will need Visual Studio and PI AF SDK installed to be able to compile the solution.
+Once the solution is compiled, the folder PI-AF-SDK-Clues\Build will contain all you need to run the command line application. 
+You can open a command line in PI-AF-SDK-Clues\Build and run the examples from there.  Each time you build, this folder gets updated with new compiled version.  
+
+In the solution:
 * Each applet has its own class
 * Each applet has its own command line parameters
-* You can start by executing the command: `clues.exe -?` 
+
+See section "How to add an new applet in the Visual Studio Solution?" below to get started and create your own applet.
 
 ___
 # Command line
@@ -85,9 +91,11 @@ ___
 
 * Copy-Paste the content of AppletTemplate.cs.txt into a newly created class. 
 
-* Rename the class and the class file name and also give a description: this description will be exposed when running the command line usage: clues.exe -?  
-    >[Description("**Description X** ")]  
-    >public class **ExampleX** : AppletBase
+* Rename the class and the class file name and also give a description: this description will be exposed when running the command line usage: clues.exe -?  and clues AppletX -?
+    > [Description("Applet General Description")]  
+    > [AdditionalDescription("Applet Specific Description")]  
+    > [UsageExample("Applet -s SRV01")]  
+    > public class **AppletX** : AppletBase
 
 * Add the command line options your applet needs.  You may refer to existing applet for the logic.  For more details please refer to the **Command Line Paser Library** Help located here: https://github.com/gsscoder/commandline/wiki.
 
@@ -97,7 +105,8 @@ ___
 
 * Compilation generated a **Build** folder in the solution folder, you can open a command line from there to test your applet.  Each time you build, it gets updated.
 
-___
+___  
+
 # Notes
 
 * If you create a class that is generic enough to be re-used, create it in Library folder.  Namespace for it is Clues.Library
@@ -109,7 +118,8 @@ ___
 * Be careful to not use same options switches twice (especially when copy pasting).  If you do so you end up with a null parameter value and you wont understand why!
 
 * Be careful to not create a class constructor with parameters, otherwise the automatic configuration may break and give you odd errors like: Error	1	Running transformation: System.MissingMethodException: No parameterless constructor defined for this object.
-___
+___  
+
 # How to contribute?  
 *You need a GitHub account to contribute*
 
@@ -122,7 +132,8 @@ In summary:
 * Make the changes
 * Push the changes back to your GitHub forked repository
 * Make pull request
-___
+___  
+
 # License
 
     Copyright 2015 OSIsoft, LLC
