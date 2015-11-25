@@ -88,8 +88,15 @@ namespace Clues
                 helpText=HelpText.AutoBuild(this, verb);
                 helpText = UsageHeading(helpText);
 
-                var additionalDescription= System.Type.GetType("Clues." + verb + ", core").GetAttributeValue(typeof(AdditionalDescription),"Text");
-                helpText.AddPreOptionsLine("\n" + additionalDescription);
+				// additional description - specific for the applet
+                var additionalDescription = System.Type.GetType("Clues." + verb + ", core").GetAttributeValue(typeof(AdditionalDescription), "Text");
+                if(!string.IsNullOrEmpty(additionalDescription))
+                    helpText.AddPreOptionsLine("\n" + additionalDescription);
+
+                // applet usage example
+                var usageExample = System.Type.GetType("Clues." + verb + ", core").GetAttributeValue(typeof(UsageExample),"Text");
+                if(!string.IsNullOrEmpty(usageExample))
+                    helpText.AddPreOptionsLine("\nUsage Example:\n" + usageExample);
 
                 // usage
                 helpText.AddPreOptionsLine("\nAvailable options for " + verb + ":");

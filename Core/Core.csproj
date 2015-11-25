@@ -68,7 +68,8 @@
     <Compile Include="Library\PiConnectionMgr.cs" />
     <Compile Include="Library\AfConnectionMgr.cs" />
     <Compile Include="Library\Workers\DataProcessor.cs" />
-    <Compile Include="_Configuration\AdditionalDescriptionAttribute.cs" />
+    <Compile Include="_Configuration\CustomAttributes\UsageExampleAttribute.cs" />
+    <Compile Include="_Configuration\CustomAttributes\AdditionalDescriptionAttribute.cs" />
     <Compile Include="_Configuration\AppletBase.cs" />
     <Compile Include="_Configuration\Helpers.cs" />
     <Compile Include="1-Basics\AF\AFConnect.cs" />
