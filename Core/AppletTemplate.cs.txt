@@ -17,13 +17,18 @@ using System;
 using System.ComponentModel;
 using CommandLine;
 using OSIsoft.AF;
+using OSIsoft.AF.Asset;
+using OSIsoft.AF.Data;
+using OSIsoft.AF.PI;
 using Clues.Library;
 
 namespace Clues
 {
 
-    [Description("Description X ")]
-    public class ExampleX :  AppletBase
+    [Description("Applet General Description")]
+    [AdditionalDescription("Applet Specific Description")]
+    [UsageExample("Applet -s SRV01")]
+    public class AppletX :  AppletBase
     {
         //Command line Options
         [Option('s', "server", HelpText = "X Server name to connect to")]
