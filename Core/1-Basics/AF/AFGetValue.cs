@@ -27,8 +27,12 @@ namespace Clues
     /// <summary>
     /// Usage example:
     /// ... AFGetValue -s optimus -d support -p "AFSDKExamples\InterrestingElement|Attribute1"
+    /// To learn more about the Path Syntax see more information here:
+    /// <see cref="https://techsupport.osisoft.com/Documentation/PI-AF-SDK/html/c3241f58-2fef-4579-91cf-6f2d71180f98.htm"/>
     /// </summary>
     [Description("To get values from attribute(s) using the Path Syntax")]
+    [AdditionalDescription("!!!")]
+    [UsageExample("AFGetValue -s optimus -d support -p \"AFSDKExamples\\InterrestingElement | Attribute1\"")]
     public class AFGetValue : AppletBase
     {
         // Command line options
@@ -61,16 +65,21 @@ namespace Clues
                 {
                     var attribute = (AFAttribute)afObject;
                     AFValue value = attribute.GetValue();
-                    Console.WriteLine("{0}{1}{2}{3}{4}", value.Value,separator, value.Timestamp,separator, attribute.Name);
+                    Console.WriteLine("{0}{1}{2}{3}{4}", GetStringValue(value), separator, value.Timestamp,separator, attribute.Name);
                 }
 
                 if (afObject is AFElement)
                 {
+
                     var element = (AFElement)afObject;
+
+                    // the attibute list object allows a single GetValue() call for all attributes at same time.
+                    // We call this a "Bulk Call"
                     var attributes = new AFAttributeList(element.Attributes);
                     var values=attributes.GetValue();
 
-                    values.ForEach((afvalue)=> Console.WriteLine("{0}{1}{2}{3}{4}", afvalue.Value,separator, afvalue.Timestamp,separator,afvalue.Attribute.Name));
+                    // prints the results
+                    values.ForEach((afvalue)=> Console.WriteLine("{0}{1}{2}{3}{4}", GetStringValue(afvalue),separator, afvalue.Timestamp,separator,afvalue.Attribute.Name));
                 }
  
             }
@@ -80,6 +89,47 @@ namespace Clues
                 this.Logger.Error(ex);
             }
 
+        }
+
+        /// <summary>
+        /// This method demonstrates how to deal with the several possible types of AFValues that can be returned.
+        /// 
+        /// </summary>
+        /// <param name="afValue"></param>
+        /// <returns></returns>
+        private string GetStringValue(AFValue afValue)
+        {
+            string result = null;
+            // Here, for each attribute we check the type and we print its value.
+            //
+
+            // we check if we have an enumeration value
+            if (afValue.Value is AFEnumerationValue)
+            {
+
+                // in this case, obj.Value.ToString() give same result as obj.Value.ToString(), but in many circumstances it is 
+                // better to split the treatment of this type of values because they can be processed differently
+
+                var digValue = (AFEnumerationValue)afValue.Value;
+                result = digValue.Name;
+            }
+
+            // other known types
+            // Note that you may need to split these to different else if statement depending on how you are processing
+            // the values.  String or bool are rarely processed the same as a single... 
+            else if (afValue.Value is String || afValue.Value is Boolean || afValue.Value is double || afValue.Value is int ||
+                     afValue.Value is DateTime || afValue.Value is Single)
+            {
+                result = afValue.Value.ToString();
+            }
+
+            // unknown types
+            else
+            {
+                result = string.Format("{1} - Unknown type", afValue.Value.GetType().ToString());
+            }
+
+            return result;
         }
 
 
