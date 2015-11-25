@@ -31,8 +31,8 @@ namespace Clues
     /// <see cref="https://techsupport.osisoft.com/Documentation/PI-AF-SDK/html/c3241f58-2fef-4579-91cf-6f2d71180f98.htm"/>
     /// </summary>
     [Description("To get values from attribute(s) using the Path Syntax")]
-    [AdditionalDescription("!!!")]
-    [UsageExample("AFGetValue -s optimus -d support -p \"AFSDKExamples\\InterrestingElement | Attribute1\"")]
+    [AdditionalDescription("")]
+    [UsageExample("AFGetValue -s optimus -d support -p \"AFSDKExamples\\InterrestingElement|Attribute1\"")]
     public class AFGetValue : AppletBase
     {
         // Command line options
